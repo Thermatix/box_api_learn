@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 	def new
 		@box_session = Box::Access.new
-		session[:token],session[:token] = @box_session.get_access_from(params['code'])
+		session[:token],session[:rtoken] = @box_session.get_access_from(params['code'])
 		redirect_to :root
 
 	end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
 	def update
 		@box_session = Box::Access.new
-		session[:token],session[:token] = @box_session.get_new_token(session[:rtoken])
+		session[:token],session[:rtoken] = @box_session.get_new_token(session[:rtoken])
 		redirect_to :root
 	end
 

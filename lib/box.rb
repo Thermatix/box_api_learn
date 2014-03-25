@@ -3,8 +3,8 @@ require 'ruby-box'
 module Box
 	class Access
 		attr_reader :session, :token
-		def initialize
-			self.session = session_create
+		def initialize access_token = nil
+			self.session = session_create access_token
 		end
 
 		def get_authorize_url
@@ -46,16 +46,16 @@ module Box
 	end
 	
 	class Client
-		attr_reader :client
-
-		def initialize session
-			self.client = RubyBox::Client.new(session)
+		# attr_reader :client
+		attr_accessor :client
+		def initialize access_token
+			self.client = RubyBox::Client.new(Access.new(access_token).session)
 		end
 
 		private
-			def client= input
-				@client = input
-			end
+			# def client= input
+			# 	@client = input
+			# end
 
 	end
 
