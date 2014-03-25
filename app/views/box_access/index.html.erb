@@ -1,0 +1,5 @@
+<% if !session[:token] %>
+	<%= render 'login' %>
+<% else %>
+	<%= render 'box_account' %>
+<% end %>
