@@ -23,8 +23,8 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		 session[:token] = nil
-		 session[:rtoken] = nil
-		 redirect_to :root
+		session[:token] = nil
+		session[:rtoken] = nil
+		redirect_to :root
 	end
 end

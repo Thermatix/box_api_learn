@@ -46,16 +46,27 @@ module Box
 	end
 	
 	class Client
-		# attr_reader :client
-		attr_accessor :client
+		 attr_reader :client
+		
 		def initialize access_token
 			self.client = RubyBox::Client.new(Access.new(access_token).session)
 		end
 
+		def get_folder input
+			t = self.client.folder_by_id((input ||= 0).to_i).folders
+			t.inject(Array.new) do |result,value| 
+				result << value.instance_variable_get("@raw_item")
+				result
+			end
+		end
+
+		def get_files input
+			self.client.folder_by_id(input).files
+		end
 		private
-			# def client= input
-			# 	@client = input
-			# end
+			def client= input
+				@client = input
+			end
 
 	end
 
