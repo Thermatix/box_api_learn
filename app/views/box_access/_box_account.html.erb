@@ -2,13 +2,16 @@
 
 
 <h2>Please write some text to save to your box account</h2>
-
+<section>
 <%= render 'flash' %>
-<%= form_tag(save_file_path, method: :post) do %>
-<%= render 'select_directory', id_value: params[:folder_id] %>
-	<p> <%= label_tag 'text to save:' %> </p>
-	<p> <%= text_area_tag 'content', nil, rows: 5, cols: 40 %> </p>
-	<p> <%= label_tag 'text_file name' %> <%= text_field_tag 'filename' %> </p>
-	<p><%= submit_tag 'save file' %></p>
-<% end %>
-<%= button_to 'logout', sessions_path, method: :delete %>
+	<%= form_tag(save_file_path, method: :post) do %>
+		<%= render 'select_directory', id_value: params[:folder_id] %>
+		<p> <%= label_tag 'text to save:' %> </p>
+		<p> <%= text_area_tag 'content', nil, row: 4, class: 'text' %> </p>
+		<p> <%= label_tag 'text_file name' %> <%= text_field_tag 'filename' %> </p>
+		<p><%= submit_tag 'save file', class: 'button' %></p>
+	<% end %>
+</section>
+<di class='logout'>
+	<%= button_to 'logout', sessions_path, method: :delete, class: 'button'  %>
+</div>

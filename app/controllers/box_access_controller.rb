@@ -3,8 +3,8 @@ class BoxAccessController < ApplicationController
 	def index
 
 		if ((token = session[:token]))
-			if session[:time] == Time.now
-				redirect_to controller: sessions, action: :update, method: :patch
+			if session[:time] && (Time.now >= session[:time] )
+				redirect_to update_sessions_path
 			else
 				@box = Box::Client.new(token)
 			end
