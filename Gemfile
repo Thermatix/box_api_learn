@@ -40,11 +40,10 @@ end
 
 group :production do 
 	gem 'rails_12factor'
-
+	
 end
 
 group :development, :test do
-	gem 'sqlite3'
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'awesome_print'
@@ -60,7 +59,5 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-
 
 ruby "2.0.0"
