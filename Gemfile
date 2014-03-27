@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'ruby-box'
 
-# gem "autoprefixer-rails"
+gem "autoprefixer-rails"
 
 gem 'dotenv-rails'
 
