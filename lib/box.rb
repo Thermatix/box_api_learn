@@ -30,6 +30,7 @@ module Box
 			def session= input
 				@session = input
 			end
+			
 			def token= input
 				@token = input
 			end
