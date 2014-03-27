@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 	def new
 		@box_session = Box::Access.new
 		session[:token],session[:rtoken] = @box_session.get_access_from(params['code'])
+		session[:time] = (Time.now + (59*60))
 		redirect_to :root
 
 	end
