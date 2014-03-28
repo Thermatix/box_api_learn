@@ -4,7 +4,7 @@ development:
   database: "box_development"
   pool: 5
   host: "localhost"
-  password: 
+  password: "Winter123" 
 
 test:
   adapter: postgresql

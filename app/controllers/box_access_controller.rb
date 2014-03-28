@@ -1,7 +1,6 @@
 class BoxAccessController < ApplicationController
 
 	def index
-
 		if ((token = session[:token]))
 			if session[:time] && (Time.now >= session[:time] )
 				redirect_to update_sessions_path

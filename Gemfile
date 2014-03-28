@@ -21,6 +21,8 @@ gem "autoprefixer-rails"
 
 gem 'dotenv-rails'
 
+gem 'foreman'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
