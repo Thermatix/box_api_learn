@@ -1,83 +1,80 @@
+// setting screen width variable
+$screen: 400;
+$show_side_bar: none;
+@media all and (max-width: 720px) and (min-width: 400px)
+{
+	$screen: 720;
+	$show_side_bar: block;
+}
+@media all and (max-width: 1000px) and (min-width: 720px)
+{
+	$screen: 1000;
+	$show_side_bar: block;
+}
+// setting screen width variable
 
-$main_h: 90%;
-$main_w: 40%;
-$main_x: 30%;
-$main_y: 0.5%;
-$font_size: 1.1em;
+//settings and theme variables
+
+$user_bar_color: #694D69;
+$button_text_color: #ffffff; 
+$backdrop: grey;
+$main_back_color: white;
+
+//settings and theme variables
+
+//functions
+@function -getT($target,$context)
+{
+	@return ($target / $context) * 100%;
+}
+//functions
+body
+{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	margin: -0.01%;
+	background: $backdrop;
+}
 
 .main
 {
+	margin-top: 3.5%; 
+	display: block;
+	width: -getT(400,$screen);
+	height: 100%;
+	border-radius: 5px;
+	background: $main_back_color;
+}
+.main:hover
+{
+	border:1px solid black;
+}
+.side_bar
+{
+	display: $show_side_bar;
+	width: -getT(300,$screen);
+	height: 100%;
+}
+.user_bar
+{
+	top: 0px;
 	position: absolute;
-	top: $main_y;
-	left: $main_x;
-	height: $main_h;
-	width: $main_w;
-	font:bold $font_size Helvetica;
-	font-style:normal;
-	color:#000000;
-	background:#e89417;
-	border:4px solid #ffddab;
-	padding:26px 43px;
-	margin:0 auto;
-	.spacer
-	{
-		margin-left: 2%;
-		margin-top: 2%;
-		margin-bottom: 4%;
-	}
-	.directory
-	{
-		border:4px solid #ffddab;
-		height: 100px;
-		margin-bottom: 1.5%;
-		input[type="radio"]
-		{
-			margin-left: 3%;
-			bottom: 50%;
-		}
-
-	}
-	.scroll
-	{
-		overflow-y: scroll;
-		height: 100%;
-	}
-	.text
-	{
-		width: 100%;
-		// height: 30%;
-	}
-	.logout
-	{
-		position: absolute;
-		float: right;
-		bottom: 1%;
-		right: 2%; 
-	}
-
+	width: 100% ;
+	background: $user_bar_color;
+	height: -getT(50,$screen);
 	.button
 	{
-		font:bold 12px Helvetica;
-		font-style:normal;
-		color:#000000;
-		background:#1746e8;
-		border:1px solid #bdadff;
-
-		border-radius:5px 5px 5px 5px;
-		padding:2% 4%;
-		cursor:pointer;
-		margin:0 auto;
-		:hover
-		{
-			cursor:pointer;
-			position:relative;
-			top:2px;
-		}
+		font-size: 1.1em;
+		text-decoration: none;
+		margin-right: 1%;
+		height: -getT(40,$screen);
+		color: $button_text_color;
+		float: right;
+		
 	}
-
+	.button:hover
+		{
+			text-shadow: 0 0 10px $button_text_color;
+		}
 }
-
-
-
-
 

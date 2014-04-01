@@ -1,0 +1,8 @@
+<section class='user_bar'>
+<% case logged_in? %>
+	<% when :true %>
+		<%= link_to 'logout', sessions_path, method: :delete, class: 'button'  %>
+	<% else %>
+		<%= link_to 'login to box', sessions_path, method: :post, class: 'button' %>
+<% end %>
+</section>

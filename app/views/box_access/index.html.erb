@@ -1,5 +1,11 @@
-<% if !session[:token] %>
-	<%= render 'login' %>
-<% else %>
-	<%= render 'box_account' %>
-<% end %>
+
+<%= render 'user_bar' %>
+<div class='side_bar'></div>
+<section class='main'>
+	<% if logged_in? == :false %>
+		<%= render 'login' %>
+	<% else %>
+		<%= render 'box_account' %>
+	<% end %>
+</section>
+<div class='side_bar'></div>
