@@ -6,8 +6,8 @@
 	<%= form_tag(save_file_path, method: :post) do %>
 		<%= render 'select_directory', id_value: params[:folder_id] %>
 		<p> <%= label_tag 'text to save:' %> </p>
-		<p> <%= text_area_tag 'content', nil, row: 4, class: 'text' %> </p>
-		<p> <%= label_tag 'text_file name' %> <%= text_field_tag 'filename' %> </p>
+		<p> <%= text_area_tag 'content', nil, row: 5, class: 'text' %> </p>
+		<p> <%= label_tag 'text_file name' %> <%= text_field_tag 'filename',nil, class: 'text_name' %> </p>
 		<p> <%= submit_tag 'save file', class: 'button' %></p>
 	<% end %>
 

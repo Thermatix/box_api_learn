@@ -1,8 +1,15 @@
 <h2> Select Folder </h2>
 <p> Please select a folder you would like to save to, click on the folder name to go into the folder. </p>
-		<% @box.get_folder(id_value).each do |folder| %>
-				<%= link_to folder['name'], select_folder_path(folder['id']) , class: 'button' %> 
-				<%= radio_button_tag 'select_folder', folder['id'] %>
-		<% end %>
+	<section class='folder'>
+		<ul class='scroll'>
+			<% @box.get_folder(id_value).each do |folder| %>
+					<li>
+					<%= link_to folder['name'], select_folder_path(folder['id']) , class: 'button' %> 
+					<%= radio_button_tag 'select_folder', folder['id'] %>
+					</li>
+			<% end %>
+		</ul>
+	</section>
 <%= link_to 'Back', :back , class: 'button'  %>
+
 

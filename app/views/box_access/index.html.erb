@@ -1,11 +1,13 @@
 
 <%= render 'user_bar' %>
-<div class='side_bar'></div>
-<section class='main'>
-	<% if logged_in? == :false %>
-		<%= render 'login' %>
-	<% else %>
-		<%= render 'box_account' %>
-	<% end %>
+<section>
+	<aside class='side_bar'></aside>
+	<section class='main'>
+		<% if logged_in? == :false %>
+			<%= render 'login' %>
+		<% else %>
+			<%= render 'box_account' %>
+		<% end %>
+	</section>
+	<aside class='side_bar'></aside>
 </section>
-<div class='side_bar'></div>

@@ -1,33 +1,191 @@
-// setting screen width variable
-$screen: 400;
-$show_side_bar: none;
-@media all and (max-width: 720px) and (min-width: 400px)
-{
-	$screen: 720;
-	$show_side_bar: block;
-}
-@media all and (max-width: 1000px) and (min-width: 720px)
-{
-	$screen: 1000;
-	$show_side_bar: block;
-}
-// setting screen width variable
-
-//settings and theme variables
-
-$user_bar_color: #694D69;
-$button_text_color: #ffffff; 
-$backdrop: grey;
-$main_back_color: white;
-
-//settings and theme variables
-
 //functions
 @function -getT($target,$context)
 {
 	@return ($target / $context) * 100%;
 }
-//functions
+
+
+///////////
+
+//mixins
+@mixin mx-media($a)
+{
+	@if $a == small-medium
+	{
+		@media #{$media} and ($feature: $small-medium + px)
+		{
+			@content
+		}
+	}
+	@else if $a == medium 
+	{
+		@media #{$media} and ($feature: $medium + px)
+		{
+			@content
+		}
+	}
+	@else if $a == medium-large 
+	{
+		@media #{$media} and ($feature: $medium-large + px)
+		{
+			@content
+		}
+	}
+	@else if $a == large 
+	{
+		@media #{$media} and ($feature: $large + px)
+		{
+			@content
+		}
+	}
+}
+
+////////
+
+//settings and theme variables
+$user_bar_color: linear-gradient(#694D69, #4C384C);
+$button_text_color: #ffffff;
+$button_back_color: limegreen; 
+$backdrop: lightgrey;
+$main_back_color: white;
+$Scroll_height: 200;
+$small: 400;
+$small-medium:560;
+$medium: 720;
+$medium-large:860;
+$large: 1000;
+$media: screen;
+$feature: min-width; 
+
+
+//////////////////////////////
+
+//setting sizes
+
+// default sizes
+$screen: $small;
+$show_side_bar: none;
+$user_bar_height: 20;
+.main
+{
+	width: -getT(($small - 100),$screen);
+	margin-left: 11.5%;
+	.folder
+	{
+		.scroll
+		{
+			height: -getT($Scroll_height ,$small - $Scroll_height);
+			width: 180px;
+		}
+	}
+}
+
+.user_bar
+{
+	height: -getT($user_bar_height,$screen);
+}
+
+/////////////////
+@include mx-media(small-medium)//560
+{
+	$screen: $small-medium;
+	$show_side_bar: block;
+	$user_bar_height: 25;
+
+	.main
+	{
+		width: -getT($small,$screen);
+		margin-left: 11%;
+		.folder
+		{
+			.scroll
+			{
+				height: -getT($Scroll_height + ($small-medium / 1.5) ,$small-medium);
+			}
+		}
+	}
+	.user_bar
+	{
+		height: -getT($user_bar_height,$screen);
+	}
+	
+}
+
+@include mx-media(medium)//720
+{
+	$screen: $medium;
+	$show_side_bar: block;
+	$user_bar_height: 30;
+	.main
+	{
+		width: -getT($small-medium,$screen);
+		margin-left: 8.5%;
+		.folder
+		{
+			.scroll
+			{
+				height: -getT($Scroll_height + ($medium / 1.3),$medium);
+			}
+		}
+	}
+	.user_bar
+	{
+		height: -getT($user_bar_height,$screen);
+	}
+
+}
+
+@include mx-media(medium-large)//860
+{
+	$screen: $medium-large;
+	$show_side_bar: block;
+	$user_bar_height: 40;
+	.main
+	{
+		width: -getT($medium,$screen);
+		margin-left: 6.5%;
+		.folder
+		{
+			.scroll
+			{
+				height: -getT($Scroll_height + ($medium-large / 1.15),$medium-large);
+			}
+		}
+	}
+	.user_bar
+	{
+		height: -getT($user_bar_height,$screen);
+	}
+
+}
+
+@include mx-media(large)//1000
+{
+	$screen: $large;
+	$show_side_bar: block;
+	$user_bar_height: 50;
+	.main
+	{
+		width: -getT($medium-large,$screen);
+		margin-left: 5.5%;
+		.folder
+		{
+			.scroll
+			{
+				height: -getT($Scroll_height + $large,$large);
+			}
+		}
+	}
+	.user_bar
+	{
+		height: -getT($user_bar_height,$screen);
+	}
+	
+}
+
+///////////////////////////////
+
+
 body
 {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -38,12 +196,59 @@ body
 
 .main
 {
-	margin-top: 3.5%; 
+	padding: 1%;
+	margin-top: 1.5%; 
 	display: block;
-	width: -getT(400,$screen);
-	height: 100%;
-	border-radius: 5px;
+	border:1px solid $main_back_color;
 	background: $main_back_color;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+	.button
+	{
+		padding:0.2%;
+		font-size: 1.1em;
+		color: $button_text_color;
+		text-decoration: none;
+		border-radius: 5px;
+		background: $button_back_color;
+		border:1px solid $button_back_color;
+	}
+	.button:hover
+	{
+		border:1px solid black;
+	}
+
+	.folder
+	{
+		border-radius: 5px;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+		height:100px;
+		margin-bottom: 3%;
+		.scroll
+		{
+			overflow: scroll;
+	    list-style-type: none;
+	    li
+			{
+				margin-left: -5%;
+				margin-bottom: 5%;
+			}
+		}
+	}
+	.text
+	{
+		border:1px solid white;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+		border-radius: 5px;
+		width: 99%;
+		height: 40%;
+	}
+	.text_name
+	{
+		border:1px solid white;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+		border-radius: 5px;
+	}
 }
 .main:hover
 {
@@ -51,8 +256,9 @@ body
 }
 .side_bar
 {
+	background: green;
 	display: $show_side_bar;
-	width: -getT(300,$screen);
+	width: 100%;
 	height: 100%;
 }
 .user_bar
@@ -61,12 +267,12 @@ body
 	position: absolute;
 	width: 100% ;
 	background: $user_bar_color;
-	height: -getT(50,$screen);
 	.button
 	{
 		font-size: 1.1em;
 		text-decoration: none;
 		margin-right: 1%;
+		margin-top: 0.2%;
 		height: -getT(40,$screen);
 		color: $button_text_color;
 		float: right;
