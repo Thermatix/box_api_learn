@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 	end
 
 	def update
-		@box_session = Box::Access.new(params[:token])
+		@box_session = Box::Access.new(session[:token])
 		session[:token],session[:rtoken] = @box_session.get_new_token(session[:rtoken])
 		session[:time] = (Time.now + (59*60))
 		redirect_to :root

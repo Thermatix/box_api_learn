@@ -1,13 +1,14 @@
 class BoxAccessController < ApplicationController
 
+	
 	def index
 
-		if ((token = session[:token]))
-			if session[:time] && (Time.now >= session[:time] )
+		case logged_in?
+			when :true
+				@box = Box::Client.new(session[:token])
+			when :old
 				redirect_to update_sessions_path
-			else
-				@box = Box::Client.new(token)
-			end
+			else			
 		end
 
 	end
